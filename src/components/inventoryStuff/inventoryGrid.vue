@@ -1,8 +1,5 @@
 <template>
   <div>
-    <greenObject></greenObject>
-    <blueObject></blueObject>
-    <yellowObject></yellowObject>
     <div class="row1">
       <div class="cell1"></div>
     </div>
@@ -11,48 +8,138 @@
     <div class="row4"></div>
     <div class="row5"></div>
   </div>
-  <draggable class="list-group" v-model="meals" tag="div">
-    <template #item="{ element: meal }">
-      <div class="block">{{ meal.name }}</div>
+  <draggable class="list-group" v-model="items" tag="div">
+    <template #item="{ element: it }">
+      <div class="block">
+        {{ it.name }}
+        {{ it.quantity }}
+      </div>
     </template>
   </draggable>
-
 </template>
 
 <script setup>
 import draggable from 'vuedraggable'
-import greenObject from './insideInventory/greenObject.vue'
-import yellowObject from './insideInventory/yellowObject.vue'
-import blueObject from './insideInventory/blueObject.vue'
+
 import { ref } from 'vue'
 
-const 
-
-const items = {
-
-};
-
-const meals = ref([
-  { name: 'Joao', id: 2 },
-  { name: 'empty', id: 0 },
-  { name: 'empty', id: 0 },
-  { name: 'empty', id: 0 },
-  { name: 'Jean', id: 3 },
-  { name: 'empty', id: 0 },
-  { name: 'John', id: 1 },
-  { name: 'empty', id: 0 },
-  { name: 'empty', id: 0 }
+const items = ref([
+  {
+    name: 'Зелёный блок',
+    color: 'green',
+    quantity: ref(1)
+  },
+  {
+    name: 'Жёлтый блок',
+    color: 'yellow',
+    quantity: ref(1)
+  },
+  {
+    name: 'Синий блок',
+    color: 'blue',
+    quantity: ref(1)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
+  { name: null, 
+    color: null, 
+    quantity: ref(null)
+  },
 ])
-
 </script>
 
 <style lang="scss">
 .block {
   width: 100px;
   height: 100px;
+  border: 3px solid black;
 }
 .list-group {
+  width: 700px;
   display: flex;
   flex-wrap: wrap;
+  gap: 40px;
 }
 </style>
