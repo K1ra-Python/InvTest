@@ -11,33 +11,43 @@
   <draggable class="list-group" v-model="items" tag="div">
     <template #item="{ element: it }">
       <div class="block">
+        <button  @click="showDisplay(it.name, it.quantity, it.color)" v-if="it.name != null">Показать описание</button>
         {{ it.name }}
         {{ it.quantity }}
       </div>
     </template>
   </draggable>
+  <div class="display" v-if="isShow == true">
+    {{ nm }}
+    {{ qt }}
+    {{ clr }}
+    <button @click="deleteObj(qt)">Удалить объект</button>
+  </div>
 </template>
 
 <script setup>
 import draggable from 'vuedraggable'
 
 import { ref } from 'vue'
-
+const isShow = ref(false);
+const nm = ref();
+const qt = ref();
+const clr = ref();
 const items = ref([
   {
     name: 'Зелёный блок',
     color: 'green',
-    quantity: ref(1)
+    quantity: ref(10)
   },
   {
     name: 'Жёлтый блок',
     color: 'yellow',
-    quantity: ref(1)
+    quantity: ref(10)
   },
   {
     name: 'Синий блок',
     color: 'blue',
-    quantity: ref(1)
+    quantity: ref(10)
   },
   { name: null, 
     color: null, 
@@ -128,6 +138,19 @@ const items = ref([
     quantity: ref(null)
   },
 ])
+
+
+function showDisplay(name,quantity, color) {
+  if (isShow.value === false) {
+    isShow.value = true;
+  
+  }
+  nm.value = name;
+  qt.value = quantity;
+  clr.value = color;
+  
+}
+
 </script>
 
 <style lang="scss">
@@ -141,5 +164,13 @@ const items = ref([
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+}
+
+.display{
+  border-left: 1px solid #4d4d4d;
+width: 250px;
+height: 500px;
+backdrop-filter: blur(16px);
+background: rgba(38, 38, 38, 0.5);
 }
 </style>
